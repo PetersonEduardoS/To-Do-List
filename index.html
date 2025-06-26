@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To-Do List</title>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <!-- Dark mode toggle button container -->
+    <div id="theme-toggle-wrapper">
+        <button id="toggle-theme">🌙 Dark Mode</button>
+    </div>
+
+    <!-- Main heading -->
+    <h1>My To-Do List</h1>
+
+    <!-- Form for adding a new task -->
+    <form id="todo-form">
+        <!-- Text input for the task description -->
+        <input type="text" id="task-input" placeholder="Enter a task" required />
+
+        <!-- Dropdown to select task priority -->
+        <select id="priority-input">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+
+        <!-- Date picker for the task deadline -->
+        <input type="date" id="deadline-input" />
+
+        <!-- Submit button to add the task -->
+        <button type="submit">Add Task</button>
+    </form>
+
+    <!-- Filter buttons to show All, Pending, or Done tasks -->
+    <div id="filters">
+        <button data-filter="all">All</button>
+        <button data-filter="pending">Pending</button>
+        <button data-filter="done">Done</button>
+    </div>
+
+    <!-- Unordered list where the tasks will be displayed -->
+    <ul id="task-list"></ul>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
