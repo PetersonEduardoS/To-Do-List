@@ -1,52 +1,68 @@
-<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>To-Do List</title>
-  <!-- Link to the external CSS file -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
-
-    <!-- Dark mode toggle button container -->
-    <div id="theme-toggle-wrapper">
-        <button id="toggle-theme">🌙 Dark Mode</button>
+  <!-- Sidebar -->
+  <aside id="sidebar" class="sidebar open" aria-label="Sidebar menu">
+    <div class="brand">
+      <span class="logo">🗒️</span>
+      <span class="brand-text">To-Do List</span>
     </div>
 
-    <!-- Main heading -->
-    <h1>My To-Do List</h1>
+    <nav class="nav" aria-label="Primary">
+      <a href="#/dashboard" data-route class="nav-item">
+        <span class="nav-ico">🏠</span><span class="nav-text">Dashboard</span>
+      </a>
+      <a href="#/add" data-route class="nav-item">
+        <span class="nav-ico">➕</span><span class="nav-text">Add Task</span>
+      </a>
+      <a href="#/calendar" data-route class="nav-item">
+        <span class="nav-ico">📅</span><span class="nav-text">Calendar</span>
+      </a>
 
-    <!-- Form for adding a new task -->
-    <form id="todo-form">
-        <!-- Text input for the task description -->
-        <input type="text" id="task-input" placeholder="Enter a task" required />
+      <div class="nav-sep" role="separator" aria-hidden="true"></div>
 
-        <!-- Dropdown to select task priority -->
-        <select id="priority-input">
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-        </select>
+      <a href="#/login" data-route class="nav-item auth-only-logged-out">
+        <span class="nav-ico">🔐</span><span class="nav-text">Login</span>
+      </a>
+      <a href="#/register" data-route class="nav-item auth-only-logged-out">
+        <span class="nav-ico">🧾</span><span class="nav-text">Register</span>
+      </a>
 
-        <!-- Date picker for the task deadline -->
-        <input type="date" id="deadline-input" />
+      <button id="btn-logout" class="nav-item danger auth-only-logged-in" type="button">
+        <span class="nav-ico">🚪</span><span class="nav-text">Log out</span>
+      </button>
+    </nav>
 
-        <!-- Submit button to add the task -->
-        <button type="submit">Add Task</button>
-    </form>
+    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar" aria-expanded="true">
+      ☰
+    </button>
+  </aside>
 
-    <!-- Filter buttons to show All, Pending, or Done tasks -->
-    <div id="filters">
-        <button data-filter="all">All</button>
-        <button data-filter="pending">Pending</button>
-        <button data-filter="done">Done</button>
-    </div>
+  <!-- Main content -->
+  <div class="page">
+    <header class="topbar">
+      <button id="topbar-toggle" class="ghost" aria-label="Open/close sidebar" aria-expanded="true">☰</button>
+      <div class="topbar-right">
+        <span id="hello"></span>
+      </div>
+    </header>
 
-    <!-- Unordered list where the tasks will be displayed -->
-    <ul id="task-list"></ul>
+    <!-- App content is rendered here by app.js -->
+    <main id="app" tabindex="-1" aria-live="polite"></main>
 
-    <!-- Link to the external JavaScript file -->
-    <script src="script.js"></script>
+    <footer class="footer">
+      <div>Created by <strong>Peterson E S Silva</strong></div>
+      <div id="footer-date"></div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
