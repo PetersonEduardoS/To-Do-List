@@ -35,13 +35,14 @@ Getting Started
 File Structure
 
 index.html — main markup and app containers
-styles.css — layout, sidebar, cards, calendar, etc.
-app.js — routing, auth, tasks, calendar, and storage logic
+style.css — layout, sidebar, cards, calendar, etc.
+script.js — routing, auth, tasks, calendar, and storage logic
 
 
 Data & Security Notes:
 Data is stored in the browser’s localStorage.
 Each user’s tasks use a key like tdl_tasks_<email>.
+User-provided text (task titles/descriptions) is HTML-escaped before rendering to prevent XSS.
 This is an educational/demo app: credentials and data are not encrypted.
 
 

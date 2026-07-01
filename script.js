@@ -3,6 +3,16 @@
 const $ = (sel, el = document) => el.querySelector(sel);
 const $$ = (sel, el = document) => Array.from(el.querySelectorAll(sel));
 
+// Escape user-provided text before injecting into innerHTML (prevents XSS)
+const escapeHtml = (str = '') =>
+    String(str).replace(/[&<>"']/g, ch => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    }[ch]));
+
 // Format YYYY-MM-DD (or ISO) to a readable date for UI
 const fmtDate = (iso, locale = 'en-US') =>
     iso
@@ -19,8 +29,9 @@ const todayStr = () => {
     return `${y}-${m}-${dd}`;
 };
 
-// Simple random id
-const uid = () => Math.random().toString(36).slice(2, 9);
+// Unique id (native, collision-resistant)
+const uid = () =>
+    (crypto && crypto.randomUUID) ? crypto.randomUUID() : Math.random().toString(36).slice(2, 9);
 
 // ===== Storage Layer (localStorage) =====
 const LS = {
@@ -301,13 +312,13 @@ function taskRow(task, ownerEmail) {
     el.className = 'task';
     el.innerHTML = `
     <div>
-      <div class="title">${task.title}</div>
+      <div class="title">${escapeHtml(task.title)}</div>
       <div class="meta">
         ${levelBadge(task.level)}
         ${task.dueDate ? `• <span>Due: ${fmtDate(task.dueDate)}</span>` : ''}
         • <span class="status ${task.done ? 'done' : 'pending'}">${task.done ? 'Done' : 'Pending'}</span>
       </div>
-      ${task.description ? `<div style="margin-top:6px;color:var(--muted)">${task.description}</div>` : ''}
+      ${task.description ? `<div style="margin-top:6px;color:var(--muted)">${escapeHtml(task.description)}</div>` : ''}
     </div>
     <div class="task-controls">
       <button class="btn ${task.done ? 'warn' : ''}" data-act="toggle">${task.done ? 'Mark pending' : 'Mark done'}</button>
@@ -438,7 +449,7 @@ function renderAdd() {
             .map(
                 t => `
       <div class="task" style="grid-template-columns:1fr">
-        <div class="title">${t.title}</div>
+        <div class="title">${escapeHtml(t.title)}</div>
         <div class="meta">
           ${levelBadge(t.level)}
           ${t.dueDate ? `• Due ${fmtDate(t.dueDate)}` : ''}
@@ -530,7 +541,7 @@ function renderCalendar() {
             const list = byDate[day] || [];
             const pills = list
                 .slice(0, 4)
-                .map(t => `<div class="cal-pill ${t.level}" title="${t.title}">${t.title}</div>`)
+                .map(t => `<div class="cal-pill ${t.level}" title="${escapeHtml(t.title)}">${escapeHtml(t.title)}</div>`)
                 .join('');
             const extra = list.length > 4 ? `<div class="cal-pill">+${list.length - 4} more</div>` : '';
             cells.push(`
