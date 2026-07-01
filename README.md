@@ -1,5 +1,8 @@
 To-Do List Web App
 
+ **Live Demo:** https://petersoneduardos.github.io/To-Do-List/
+
+
 Responsive and interactive To-Do List built with pure HTML, CSS, and JavaScript (no frameworks). 
 Includes simple client-side auth and route protection, with per-user data saved in localStorage.
 
@@ -26,6 +29,8 @@ Calendar – monthly deadlines view (#/calendar)
 
 Getting Started
 
+Option 1 — Try it online: https://petersoneduardos.github.io/To-Do-List/
+Option 2 — Run locally:
 -Clone or download this repo
 -Open index.html in your browser
 -Register, then log in, and start adding tasks
