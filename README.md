@@ -29,19 +29,19 @@ Calendar – monthly deadlines view (#/calendar)
 
 Getting Started
 
-Option 1 — Try it online: https://petersoneduardos.github.io/To-Do-List/
-Option 2 — Run locally:
+Option 1: Try it online: https://petersoneduardos.github.io/To-Do-List/
+Option 2: Run locally:
 -Clone or download this repo
 -Open index.html in your browser
 -Register, then log in, and start adding tasks
--No build tools or installs required — everything runs client-side.
+-No build tools or installs required, everything runs client-side.
 
 
 File Structure
 
-index.html — main markup and app containers
-style.css — layout, sidebar, cards, calendar, etc.
-script.js — routing, auth, tasks, calendar, and storage logic
+index.html: main markup and app containers
+style.css: layout, sidebar, cards, calendar, etc.
+script.js: routing, auth, tasks, calendar, and storage logic
 
 
 Data & Security Notes:
