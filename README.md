@@ -1,70 +1,69 @@
-To-Do List Web App
+# To-Do List Web App
 
- **Live Demo:** https://petersoneduardos.github.io/To-Do-List/
+**Live demo:** https://petersoneduardos.github.io/To-Do-List/
 
+A responsive task manager built with pure **HTML, CSS and JavaScript** (no frameworks or build tools). It has client-side login and route protection, a priority board and a monthly calendar, with each user's data saved in `localStorage`.
 
-Responsive and interactive To-Do List built with pure HTML, CSS, and JavaScript (no frameworks). 
-Includes simple client-side auth and route protection, with per-user data saved in localStorage.
+## Features
 
-Features
+- Login and Register screens with protected routes
+- Dashboard with three columns by priority: High, Medium, Low
+- Add and edit tasks with title, description, priority and deadline
+- Mark tasks as Done/Pending and delete them
+- Add Task page with a live preview and filters (All / Pending / Done)
+- Monthly calendar showing tasks by due date (with "+N more" overflow)
+- Collapsible sidebar and a topbar greeting
+- Per-user persistence in `localStorage` (task lists isolated by email)
+- Responsive layout with basic accessibility (focus management)
 
--Login & Register on a dedicated screen (no sidebar), with protected routes
--Dashboard with three columns by priority: High, Medium, Low
--Add/Edit tasks: title, description, priority, and deadline (date picker)
--Mark as Done/Pending and Delete tasks
--Inline preview with filters (All / Pending / Done) on Add Task page
--Monthly Calendar showing tasks by day (with “+N more” overflow)
--Collapsible sidebar (☰) and a topbar greeting
--Sticky footer with credits (Peterson E S Silva) and today’s date
--Per-user persistence via localStorage (lists isolated by email)
--Responsive design with small accessibility touches (focus management, etc.)
+## Pages and Routes
 
-Pages & Routes
+| Page | Route | Description |
+|---|---|---|
+| Login | `#/login` | First page for unauthenticated users |
+| Register | `#/register` | Create an account (name, email, password) |
+| Dashboard | `#/dashboard` | Priority columns with task cards |
+| Add Task | `#/add` | Form with preview and filters |
+| Calendar | `#/calendar` | Monthly view of deadlines |
 
-Login – first page for unauthenticated users (#/login)
-Register – create account (name, email, password) (#/register)
-Dashboard – priority columns with task cards (#/dashboard)
-Add Task – form + preview with filters (#/add)
-Calendar – monthly deadlines view (#/calendar)
+## Getting Started
 
-Getting Started
+Open the [live demo](https://petersoneduardos.github.io/To-Do-List/), or run it locally:
 
-Option 1: Try it online: https://petersoneduardos.github.io/To-Do-List/
-Option 2: Run locally:
--Clone or download this repo
--Open index.html in your browser
--Register, then log in, and start adding tasks
--No build tools or installs required, everything runs client-side.
+```bash
+git clone https://github.com/PetersonEduardoS/To-Do-List.git
+cd To-Do-List
+```
 
+Then open `index.html` in your browser. No installs or build step needed.
 
-File Structure
+## File Structure
 
-index.html: main markup and app containers
-style.css: layout, sidebar, cards, calendar, etc.
-script.js: routing, auth, tasks, calendar, and storage logic
+```
+index.html   # markup and app containers
+style.css    # layout, sidebar, cards, calendar
+script.js    # hash routing, auth, tasks, calendar and storage logic
+```
 
+## Data and Security Notes
 
-Data & Security Notes:
-Data is stored in the browser’s localStorage.
-Each user’s tasks use a key like tdl_tasks_<email>.
-User-provided text (task titles/descriptions) is HTML-escaped before rendering to prevent XSS.
-This is an educational/demo app: credentials and data are not encrypted.
+- Data is stored in the browser's `localStorage`; each user's tasks use a key like `tdl_tasks_<email>`.
+- User-provided text is HTML-escaped before rendering to prevent XSS.
+- This is an educational front-end project: credentials and data are **not** encrypted and the "auth" is client-side only. A real app would use a back-end API with hashed passwords and token-based authentication (see my [Hospital Appointment System](https://github.com/PetersonEduardoS/HospitalAppointmentSystem71557)).
 
+## Roadmap
 
-Roadmap (nice-to-haves)
+- Text search and date-range filters
+- Drag-and-drop between columns (Kanban)
+- Tags/categories and tag filtering
+- Export/Import JSON
+- Real back end (API) with secure authentication
 
--Text search and date-range filters
--Drag-and-drop between columns (Kanban)
--Tags/categories and tag filtering
--Export/Import JSON
--Real backend (API) and secure authentication
+## Browser Support
 
-Browser Support
+Modern browsers: Chrome, Firefox, Edge, Safari.
 
-Works on modern browsers: Chrome, Firefox, Edge, Safari.
+## Author
 
-
-Author
-
-Created by Peterson E S Silva as a personal exercise to build a clean, usable JavaScript web app 
-using only the DOM API and localStorage.
+**Peterson Eduardo Sampaio Silva**
+[LinkedIn](https://www.linkedin.com/in/peterson-eduardo-silva) · [GitHub](https://github.com/PetersonEduardoS)
